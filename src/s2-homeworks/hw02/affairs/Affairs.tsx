@@ -6,23 +6,15 @@ import s from './Affairs.module.css'
 type AffairsPropsType = {
     data: AffairType[]
     setFilter: (filter: FilterType) => void
-    deleteAffairCallback: any
+    deleteAffairCallback: (_id: number) => void
     filter: FilterType
 }
 
 function Affairs(props: AffairsPropsType) {
-    const setAll = (s: FilterType) => {
-        props.setFilter(s)
-    }
-    const setHigh = (s: FilterType) => {
-        props.setFilter(s)
-    }
-    const setMiddle = (s: FilterType) => {
-        props.setFilter(s)
-    }
-    const setLow = (s: FilterType) => {
-        props.setFilter(s)
-    }
+    const setAll = () => {props.setFilter('all')}
+    const setHigh = () => {props.setFilter('high')}
+    const setMiddle = () => {props.setFilter('middle')}
+    const setLow = () => {props.setFilter('low')}
 
     const cnAll = s.button + ' ' + s.all + (props.filter === 'all' ? ' ' + s.active : '')
     const cnHigh = s.button + ' ' + s.high + (props.filter === 'high' ? ' ' + s.active : '')
@@ -42,28 +34,28 @@ function Affairs(props: AffairsPropsType) {
             <div className={s.buttonContainer}>
                 <button
                     id={'hw2-button-all'}
-                    onClick={() => setAll('all')}
+                    onClick={setAll}
                     className={cnAll}
                 >
                     All
                 </button>
                 <button
                     id={'hw2-button-high'}
-                    onClick={() => setHigh('high')}
+                    onClick={setHigh}
                     className={cnHigh}
                 >
                     High
                 </button>
                 <button
                     id={'hw2-button-middle'}
-                    onClick={() => setMiddle('middle')}
+                    onClick={setMiddle}
                     className={cnMiddle}
                 >
                     Middle
                 </button>
                 <button
                     id={'hw2-button-low'}
-                    onClick={() => setLow('low')}
+                    onClick={setLow}
                     className={cnLow}
                 >
                     Low
