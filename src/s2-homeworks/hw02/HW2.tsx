@@ -37,14 +37,14 @@ const defaultAffairs: AffairType[] = [ // need to fix any
 // pure helper functions
 export const filterAffairs = (affairs: AffairType[], filter: FilterType): AffairType[] => {
     switch (filter) {
-        case "all":
-            return defaultAffairs
         case "high":
             return affairs.filter(a => a.priority === 'high')
         case "middle":
             return affairs.filter(a => a.priority === 'middle')
         case "low":
             return affairs.filter(a => a.priority === 'low')
+        default:
+            return affairs
     }
 }
 export const deleteAffair = (affairs: AffairType[], _id: number): AffairType[] => { // need to fix any
