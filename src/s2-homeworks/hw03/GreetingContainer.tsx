@@ -18,6 +18,7 @@ export const pureAddUser = (name: string,
     if (name) {
         addUserCallback(name)
         setName('')
+        setError('')
     }
     if (!name) {
         setError('Ошибка! Введите имя!')
@@ -27,6 +28,9 @@ export const pureAddUser = (name: string,
 export const pureOnBlur = (name: string, setError: (error: string) => void) => { // если имя пустое - показать ошибку
     if (!name.trim()) {
         setError('Ошибка! Введите имя!')
+    }
+    if(name){
+        setError('')
     }
 }
 
@@ -49,6 +53,7 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({users, addUser
         setName(e.currentTarget.value) // need to fix
         error && setError('Ошибка! Введите имя!')
     }
+
 
     const addUser = () => {
         pureAddUser(name, setError, setName, addUserCallback)
@@ -73,7 +78,7 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({users, addUser
             addUser={addUser}
             onBlur={onBlur}
             onEnter={onEnter}
-            error={error}
+            error={error.trim()}
             totalUsers={totalUsers}
             lastUserName={lastUserName}
         />
