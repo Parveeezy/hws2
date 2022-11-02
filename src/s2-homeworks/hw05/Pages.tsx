@@ -7,7 +7,7 @@ import JuniorPlus from './pages/JuniorPlus'
 
 export const PATH = {
     PRE_JUNIOR: '/pre-junior',
-    JUNIOR: '/junior',
+    JUNIOR: '/junior-jun',
     JUNIOR_PLUS: '/junior-plus',
 }
 
@@ -18,7 +18,7 @@ function Pages() {
             <Routes>
                 {/*роутинг будут писать студенты*/}
                 {/*в начале мы попадаем на страницу '/' и переходим сразу на страницу /pre-junior*/}
-                <Route path={'/'} element={<PreJunior/>}/>
+                <Route path={'/'} element={<Navigate to={PATH.PRE_JUNIOR}/>}/>
 
                 {/*роуты для /pre-junior, /junior, /junior-plus*/}
                 <Route path={PATH.PRE_JUNIOR} element={<PreJunior/>}/>
